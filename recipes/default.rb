@@ -17,9 +17,7 @@ user node['mule']['user'] do
 end
 
 archive 'mule' do
-  url node['mule']['package']['base_url'] + '/' +
-    node['mule']['version'] + '/' +
-    node['mule']['package']['filename']
+  url [node['mule']['package']['base_url'], node['mule']['version'], node['mule']['package']['filename']].join('/')
   version node['mule']['version']
   prefix node['mule']['package']['dir_prefix']
   owner node['mule']['user']
