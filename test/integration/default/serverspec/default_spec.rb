@@ -20,7 +20,7 @@ describe 'mule::default' do
 
   context 'mule package' do
     let(:mule_current_dir) { file('/opt/mule/versions/current') }
-    let(:mule_version_dir) { file('/opt/mule/versions/mule-3.5.0')}
+    let(:mule_version_dir) { file('/opt/mule/versions/mule-3.5.0') }
 
     it 'installs in a versioned directory' do
       expect(mule_version_dir).to be_directory

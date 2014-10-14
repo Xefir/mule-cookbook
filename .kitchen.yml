@@ -7,10 +7,13 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: centos-6.5
 
 suites:
   - name: default
     run_list:
       - recipe[mule::default]
     attributes:
+      mule:
+        package:
+          dir_prefix: /opt

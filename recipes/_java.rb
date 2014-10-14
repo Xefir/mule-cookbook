@@ -8,5 +8,11 @@ when 'ibm'
   node.default['java']['ibm']['accept_ibm_download_terms'] = true
 end
 
-include_recipe 'apt'
+case node['platform_family']
+when 'debian'
+  include_recipe 'apt'
+when 'redhat'
+  include_recipe 'yum'
+end
+
 include_recipe 'java'

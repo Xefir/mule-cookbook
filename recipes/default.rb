@@ -10,14 +10,16 @@
 include_recipe 'mule::_java'
 
 user node['mule']['user'] do
-  supports :manage_home => true
+  supports manage_home: true
   shell '/bin/bash'
   home "/home/#{node['mule']['user']}"
   comment 'Mule user'
 end
 
 archive 'mule' do
-  url "#{node['mule']['package']['base_url']}/#{node['mule']['version']}/#{node['mule']['package']['filename']}"
+  url node['mule']['package']['base_url'] + '/' +
+    node['mule']['version'] + '/' +
+    node['mule']['package']['filename']
   version node['mule']['version']
   prefix node['mule']['package']['dir_prefix']
   owner node['mule']['user']
@@ -28,12 +30,12 @@ end
 template '/etc/init.d/mule' do
   source 'mule_init.erb'
   mode 0755
-  variables({
+  variables(
     user: node['mule']['user'],
-    mule_home: node['mule']['package']['dir_prefix']+"/mule/versions/current"
-    })
+    mule_home: node['mule']['package']['dir_prefix'] + '/mule/versions/current'
+    )
 end
 
 service 'mule' do
-  action [ :start, :enable ]
+  action [:start, :enable]
 end
