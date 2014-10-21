@@ -1,4 +1,5 @@
 # mule-cookbook
+[![Dependency Status](https://www.versioneye.com/user/projects/544621ea44a525278f000003/badge.svg?style=flat)](https://www.versioneye.com/user/projects/544621ea44a525278f000003)
 
 Installs the Mule ESB application from a zip file from the [MuleSoft](http://www.mulesoft.org) repositories.
 
