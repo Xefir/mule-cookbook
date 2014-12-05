@@ -18,16 +18,71 @@ describe 'mule::default' do
     end
   end
 
-  context 'mule package' do
-    let(:mule_current_dir) { file('/opt/mule/versions/current') }
-    let(:mule_version_dir) { file('/opt/mule/versions/mule-3.5.0') }
+  context 'base dir' do
+    let(:base_dir) { file('/opt/mule') }
 
-    it 'installs in a versioned directory' do
-      expect(mule_version_dir).to be_directory
+    it 'exists' do
+      expect(base_dir).to be_directory
+    end
+
+    it 'is owned by mule:mule' do
+      expect(base_dir).to be_owned_by 'mule'
+      expect(base_dir).to be_grouped_into 'mule'
+    end
+
+    it 'has 0755 permissions' do
+      expect(base_dir).to be_mode 755
+    end
+  end
+
+  context 'versions dir' do
+    let(:versions_dir) { file('/opt/mule/versions') }
+
+    it 'exists' do
+      expect(versions_dir).to be_directory
+    end
+
+    it 'is owned by mule:mule' do
+      expect(versions_dir).to be_owned_by 'mule'
+      expect(versions_dir).to be_grouped_into 'mule'
+    end
+
+    it 'has 0755 permissions' do
+      expect(versions_dir).to be_mode 755
+    end
+  end
+
+  context 'package dir' do
+    let(:package_dir) { file('/opt/mule/versions/mule-3.5.0') }
+
+    it 'exists' do
+      expect(package_dir).to be_directory
+    end
+
+    it 'is owned by mule:mule' do
+      expect(package_dir).to be_owned_by 'mule'
+      expect(package_dir).to be_grouped_into 'mule'
+    end
+
+    it 'has 0755 permissions' do
+      expect(package_dir).to be_mode 755
+    end
+  end
+
+  context 'current dir' do
+    let(:current_dir) { file('/opt/mule/versions/current') }
+
+    it 'exists' do
+      expect(current_dir).to be_directory
+    end
+
+    it 'is owned by mule:mule' do
+      expect(current_dir).to be_owned_by 'mule'
+      expect(current_dir).to be_grouped_into 'mule'
     end
 
     it 'creates a symlink to the current version' do
-      expect(mule_current_dir).to be_linked_to '/opt/mule/versions/mule-3.5.0'
+      expect(current_dir).to be_linked_to '/opt/mule/versions/mule-3.5.0'
     end
   end
 
