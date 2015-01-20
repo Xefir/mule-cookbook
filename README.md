@@ -44,10 +44,22 @@ Red Hat 6 is also assumed to work.
     <td><tt>mule</tt></td>
   </tr>
   <tr>
+    <td><tt>['mule']['uid']</tt></td>
+    <td>Integer</td>
+    <td>UID for the `mule` user</td>
+    <td><tt>4000</tt></td>
+  </tr>
+  <tr>
     <td><tt>['mule']['group']</tt></td>
     <td>String</td>
     <td>Group that the application user will be a member of.</td>
     <td><tt>mule</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mule']['gid']</tt></td>
+    <td>Integer</td>
+    <td>GID for the `mule` group</td>
+    <td><tt>4000</tt></td>
   </tr>
   <tr>
     <td><tt>['mule']['package']['base_url']</tt></td>

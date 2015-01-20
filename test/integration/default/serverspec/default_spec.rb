@@ -9,12 +9,27 @@ describe 'mule::default' do
       expect(mule_user).to exist
     end
 
+    it 'has the correct uid' do
+      expect(mule_user).to have_uid 4000
+    end
+
     it 'has login shell /bin/bash' do
       expect(mule_user).to have_login_shell '/bin/bash'
     end
 
     it 'has a home directory' do
       expect(mule_user).to have_home_directory '/home/mule'
+    end
+  end
+
+  context 'mule group' do
+    let(:mule_group) { group('mule') }
+    it 'is created' do
+      expect(mule_group).to exist
+    end
+
+    it 'has the correct gid' do
+      expect(mule_group).to have_gid 4000
     end
   end
 
