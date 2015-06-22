@@ -9,5 +9,6 @@ default['mule']['group'] = 'mule'
 default['mule']['gid'] = 4000
 
 default['mule']['package']['base_url'] = 'https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone'
-default['mule']['package']['filename'] = 'mule-standalone-' + node['mule']['version'] + '.zip'
+
+default['mule']['package']['filename'] = "mule-standalone-%{version}.zip"
 default['mule']['package']['dir_prefix'] = '/usr/local'
