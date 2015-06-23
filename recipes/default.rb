@@ -31,6 +31,14 @@ archive 'mule' do
   extract_action 'unzip_and_strip_dir'
 end
 
+[ '/mule', '/mule/versions', "/mule/versions/mule-#{node['mule']['version']}" ].each do |dir|
+  directory node['mule']['package']['dir_prefix'] + dir do
+    owner node['mule']['user']
+    group node['mule']['group']
+    mode 0755
+  end
+end
+
 template '/etc/init.d/mule' do
   source 'mule_init.erb'
   mode 0755
